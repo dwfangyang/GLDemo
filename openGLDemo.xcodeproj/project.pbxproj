@@ -7,15 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C069A1FB1E98E7F300D678EC /* VRPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C069A1FA1E98E7F300D678EC /* VRPlayerViewController.m */; };
+		C069A1FE1E98EDE300D678EC /* GLVRPainter.m in Sources */ = {isa = PBXBuildFile; fileRef = C069A1FD1E98EDE300D678EC /* GLVRPainter.m */; };
+		C069A2141E9D09AF00D678EC /* vr.png in Resources */ = {isa = PBXBuildFile; fileRef = C069A2131E9D09AF00D678EC /* vr.png */; };
 		C06B03511D7BF9100031B49E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03501D7BF9100031B49E /* main.m */; };
 		C06B03541D7BF9100031B49E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03531D7BF9100031B49E /* AppDelegate.m */; };
-		C06B03571D7BF9100031B49E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03561D7BF9100031B49E /* ViewController.m */; };
 		C06B035A1D7BF9100031B49E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06B03581D7BF9100031B49E /* Main.storyboard */; };
 		C06B035D1D7BF9100031B49E /* openGLDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C06B035B1D7BF9100031B49E /* openGLDemo.xcdatamodeld */; };
 		C06B035F1D7BF9100031B49E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06B035E1D7BF9100031B49E /* Assets.xcassets */; };
 		C06B03621D7BF9100031B49E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06B03601D7BF9100031B49E /* LaunchScreen.storyboard */; };
 		C06B036D1D7BF9110031B49E /* openGLDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B036C1D7BF9110031B49E /* openGLDemoTests.m */; };
 		C06B03781D7BF9110031B49E /* openGLDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03771D7BF9110031B49E /* openGLDemoUITests.m */; };
+		C06B038D1D7BF95B0031B49E /* openGLCubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03861D7BF95B0031B49E /* openGLCubeView.m */; };
+		C06B038E1D7BF95B0031B49E /* openGLDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C06B03871D7BF95B0031B49E /* openGLDemo.xcdatamodeld */; };
+		C07E50911E9274800035F14E /* GLYUVPainter.m in Sources */ = {isa = PBXBuildFile; fileRef = C07E50901E9274800035F14E /* GLYUVPainter.m */; };
+		C07EF2ED1E6C15C300039924 /* libGLImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0865A3D1DF154BC008C50DB /* libGLImage.a */; };
+		C07EF3511E7028E300039924 /* UIImage+scaledToSize.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EF3501E7028E300039924 /* UIImage+scaledToSize.m */; };
+		C07EF3561E7028EE00039924 /* VideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EF3531E7028EE00039924 /* VideoDecoder.m */; };
+		C07EF3571E7028EE00039924 /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EF3551E7028EE00039924 /* VideoEncoder.m */; };
+		C07EF35E1E702D8300039924 /* videoCapturer.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EF35D1E702D8300039924 /* videoCapturer.m */; };
+		C08BFA181E03E997000BC6A5 /* GLBeautyPainter.m in Sources */ = {isa = PBXBuildFile; fileRef = C08BFA171E03E997000BC6A5 /* GLBeautyPainter.m */; };
+		C09C01CB1E7183D90008AE0D /* dataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C01CA1E7183D90008AE0D /* dataController.m */; };
+		C09C01F91E7788E70008AE0D /* offScreenContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C01F81E7788E70008AE0D /* offScreenContext.m */; };
+		C09C02051E7810430008AE0D /* AudioCapturer.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02041E7810430008AE0D /* AudioCapturer.m */; };
+		C09C020E1E7929320008AE0D /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C020D1E7929320008AE0D /* Utility.m */; };
+		C09C023A1E7ECC6E0008AE0D /* RecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02391E7ECC6E0008AE0D /* RecordButton.m */; };
+		C09C02551E80ED410008AE0D /* AlbumDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02541E80ED410008AE0D /* AlbumDataController.m */; };
+		C09C025B1E80ED4E0008AE0D /* CameraDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02581E80ED4E0008AE0D /* CameraDataController.m */; };
+		C09C025C1E80ED4E0008AE0D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C025A1E80ED4E0008AE0D /* ViewController.m */; };
+		C09C02611E80F14F0008AE0D /* DanmakuInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02601E80F14F0008AE0D /* DanmakuInputView.m */; };
+		C09F5ECE1EAC4D25007541AC /* demo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = C09F5ECD1EAC4D25007541AC /* demo.m4v */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,15 +54,38 @@
 			remoteGlobalIDString = C06B034B1D7BF9100031B49E;
 			remoteInfo = openGLDemo;
 		};
+		C0865A3C1DF154BC008C50DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0865A381DF154BC008C50DB /* GLImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C04E0ECC1DEE737100318A01;
+			remoteInfo = GLImage;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C07EF2E31E6A718400039924 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		C069A1F91E98E7F300D678EC /* VRPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRPlayerViewController.h; sourceTree = "<group>"; };
+		C069A1FA1E98E7F300D678EC /* VRPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRPlayerViewController.m; sourceTree = "<group>"; };
+		C069A1FC1E98EDE300D678EC /* GLVRPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVRPainter.h; sourceTree = "<group>"; };
+		C069A1FD1E98EDE300D678EC /* GLVRPainter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVRPainter.m; sourceTree = "<group>"; };
+		C069A2131E9D09AF00D678EC /* vr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vr.png; path = ../../../../Downloads/vr.png; sourceTree = "<group>"; };
 		C06B034C1D7BF9100031B49E /* openGLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openGLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06B03501D7BF9100031B49E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C06B03521D7BF9100031B49E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C06B03531D7BF9100031B49E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C06B03551D7BF9100031B49E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C06B03561D7BF9100031B49E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C06B03591D7BF9100031B49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C06B035C1D7BF9100031B49E /* openGLDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = openGLDemo.xcdatamodel; sourceTree = "<group>"; };
 		C06B035E1D7BF9100031B49E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +97,47 @@
 		C06B03731D7BF9110031B49E /* openGLDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openGLDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06B03771D7BF9110031B49E /* openGLDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = openGLDemoUITests.m; sourceTree = "<group>"; };
 		C06B03791D7BF9110031B49E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C06B03851D7BF95B0031B49E /* openGLCubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openGLCubeView.h; sourceTree = "<group>"; };
+		C06B03861D7BF95B0031B49E /* openGLCubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openGLCubeView.m; sourceTree = "<group>"; };
+		C06B03881D7BF95B0031B49E /* openGLDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = openGLDemo.xcdatamodel; sourceTree = "<group>"; };
+		C07E508F1E9274800035F14E /* GLYUVPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLYUVPainter.h; sourceTree = "<group>"; };
+		C07E50901E9274800035F14E /* GLYUVPainter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLYUVPainter.m; sourceTree = "<group>"; };
+		C07EF2D11E6A718400039924 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		C07EF2D31E6A718400039924 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		C07EF2E41E6BCB2300039924 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C07EF34B1E7021B100039924 /* runloopTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = runloopTest.h; sourceTree = "<group>"; };
+		C07EF34E1E70269700039924 /* openGLDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "openGLDemo-Prefix.pch"; sourceTree = "<group>"; };
+		C07EF34F1E7028E300039924 /* UIImage+scaledToSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+scaledToSize.h"; sourceTree = "<group>"; };
+		C07EF3501E7028E300039924 /* UIImage+scaledToSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+scaledToSize.m"; sourceTree = "<group>"; };
+		C07EF3521E7028EE00039924 /* VideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDecoder.h; sourceTree = "<group>"; };
+		C07EF3531E7028EE00039924 /* VideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDecoder.m; sourceTree = "<group>"; };
+		C07EF3541E7028EE00039924 /* VideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEncoder.h; sourceTree = "<group>"; };
+		C07EF3551E7028EE00039924 /* VideoEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoEncoder.m; sourceTree = "<group>"; };
+		C07EF35C1E702D8300039924 /* videoCapturer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = videoCapturer.h; sourceTree = "<group>"; };
+		C07EF35D1E702D8300039924 /* videoCapturer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = videoCapturer.m; sourceTree = "<group>"; };
+		C07EF35F1E7033BA00039924 /* videoCapturerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = videoCapturerDelegate.h; sourceTree = "<group>"; };
+		C0865A381DF154BC008C50DB /* GLImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLImage.xcodeproj; path = ../../../GitHub/GLImage/GLImage.xcodeproj; sourceTree = "<group>"; };
+		C08BFA161E03E997000BC6A5 /* GLBeautyPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBeautyPainter.h; sourceTree = "<group>"; };
+		C08BFA171E03E997000BC6A5 /* GLBeautyPainter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBeautyPainter.m; sourceTree = "<group>"; };
+		C09C01C91E7183D90008AE0D /* dataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataController.h; sourceTree = "<group>"; };
+		C09C01CA1E7183D90008AE0D /* dataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataController.m; sourceTree = "<group>"; };
+		C09C01F71E7788E70008AE0D /* offScreenContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = offScreenContext.h; sourceTree = "<group>"; };
+		C09C01F81E7788E70008AE0D /* offScreenContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = offScreenContext.m; sourceTree = "<group>"; };
+		C09C02031E7810430008AE0D /* AudioCapturer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCapturer.h; sourceTree = "<group>"; };
+		C09C02041E7810430008AE0D /* AudioCapturer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCapturer.m; sourceTree = "<group>"; };
+		C09C020C1E7929320008AE0D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		C09C020D1E7929320008AE0D /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		C09C02381E7ECC6E0008AE0D /* RecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordButton.h; sourceTree = "<group>"; };
+		C09C02391E7ECC6E0008AE0D /* RecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordButton.m; sourceTree = "<group>"; };
+		C09C02531E80ED410008AE0D /* AlbumDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDataController.h; sourceTree = "<group>"; };
+		C09C02541E80ED410008AE0D /* AlbumDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDataController.m; sourceTree = "<group>"; };
+		C09C02571E80ED4E0008AE0D /* CameraDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDataController.h; sourceTree = "<group>"; };
+		C09C02581E80ED4E0008AE0D /* CameraDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDataController.m; sourceTree = "<group>"; };
+		C09C02591E80ED4E0008AE0D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C09C025A1E80ED4E0008AE0D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C09C025F1E80F14F0008AE0D /* DanmakuInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DanmakuInputView.h; sourceTree = "<group>"; };
+		C09C02601E80F14F0008AE0D /* DanmakuInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DanmakuInputView.m; sourceTree = "<group>"; };
+		C09F5ECD1EAC4D25007541AC /* demo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = demo.m4v; path = ../../../../Downloads/demo.m4v; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07EF2ED1E6C15C300039924 /* libGLImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +166,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C069A1F71E98E7C000D678EC /* player */ = {
+			isa = PBXGroup;
+			children = (
+				C069A1F91E98E7F300D678EC /* VRPlayerViewController.h */,
+				C069A1FA1E98E7F300D678EC /* VRPlayerViewController.m */,
+			);
+			path = player;
+			sourceTree = "<group>";
+		};
 		C06B03431D7BF9100031B49E = {
 			isa = PBXGroup;
 			children = (
 				C06B034E1D7BF9100031B49E /* openGLDemo */,
 				C06B036B1D7BF9110031B49E /* openGLDemoTests */,
 				C06B03761D7BF9110031B49E /* openGLDemoUITests */,
+				C07EF2D01E6A718400039924 /* Frameworks */,
 				C06B034D1D7BF9100031B49E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,16 +199,23 @@
 		C06B034E1D7BF9100031B49E /* openGLDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C09F5ECD1EAC4D25007541AC /* demo.m4v */,
+				C069A2131E9D09AF00D678EC /* vr.png */,
+				C09C025D1E80ED830008AE0D /* views */,
+				C09C02511E80ECCC0008AE0D /* controllers */,
+				C09C024F1E80EB200008AE0D /* supportingModel */,
+				C07EF34D1E70238500039924 /* utilities */,
+				C06B03871D7BF95B0031B49E /* openGLDemo.xcdatamodeld */,
 				C06B03521D7BF9100031B49E /* AppDelegate.h */,
 				C06B03531D7BF9100031B49E /* AppDelegate.m */,
-				C06B03551D7BF9100031B49E /* ViewController.h */,
-				C06B03561D7BF9100031B49E /* ViewController.m */,
 				C06B03581D7BF9100031B49E /* Main.storyboard */,
 				C06B035E1D7BF9100031B49E /* Assets.xcassets */,
 				C06B03601D7BF9100031B49E /* LaunchScreen.storyboard */,
 				C06B03631D7BF9100031B49E /* Info.plist */,
 				C06B035B1D7BF9100031B49E /* openGLDemo.xcdatamodeld */,
 				C06B034F1D7BF9100031B49E /* Supporting Files */,
+				C07EF34B1E7021B100039924 /* runloopTest.h */,
+				C07EF34E1E70269700039924 /* openGLDemo-Prefix.pch */,
 			);
 			path = openGLDemo;
 			sourceTree = "<group>";
@@ -143,6 +246,162 @@
 			path = openGLDemoUITests;
 			sourceTree = "<group>";
 		};
+		C07EF2D01E6A718400039924 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0865A381DF154BC008C50DB /* GLImage.xcodeproj */,
+				C07EF2E41E6BCB2300039924 /* CoreText.framework */,
+				C07EF2D11E6A718400039924 /* PhotosUI.framework */,
+				C07EF2D31E6A718400039924 /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C07EF34C1E70234D00039924 /* videoCoder */ = {
+			isa = PBXGroup;
+			children = (
+				C07EF3521E7028EE00039924 /* VideoDecoder.h */,
+				C07EF3531E7028EE00039924 /* VideoDecoder.m */,
+				C07EF3541E7028EE00039924 /* VideoEncoder.h */,
+				C07EF3551E7028EE00039924 /* VideoEncoder.m */,
+			);
+			path = videoCoder;
+			sourceTree = "<group>";
+		};
+		C07EF34D1E70238500039924 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C07EF34F1E7028E300039924 /* UIImage+scaledToSize.h */,
+				C07EF3501E7028E300039924 /* UIImage+scaledToSize.m */,
+				C09C020C1E7929320008AE0D /* Utility.h */,
+				C09C020D1E7929320008AE0D /* Utility.m */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		C07EF35A1E702C2300039924 /* GLPaint */ = {
+			isa = PBXGroup;
+			children = (
+				C08BFA161E03E997000BC6A5 /* GLBeautyPainter.h */,
+				C08BFA171E03E997000BC6A5 /* GLBeautyPainter.m */,
+				C06B03851D7BF95B0031B49E /* openGLCubeView.h */,
+				C06B03861D7BF95B0031B49E /* openGLCubeView.m */,
+				C07E508F1E9274800035F14E /* GLYUVPainter.h */,
+				C07E50901E9274800035F14E /* GLYUVPainter.m */,
+				C069A1FC1E98EDE300D678EC /* GLVRPainter.h */,
+				C069A1FD1E98EDE300D678EC /* GLVRPainter.m */,
+			);
+			path = GLPaint;
+			sourceTree = "<group>";
+		};
+		C07EF35B1E702D3400039924 /* videoCapture */ = {
+			isa = PBXGroup;
+			children = (
+				C07EF35C1E702D8300039924 /* videoCapturer.h */,
+				C07EF35D1E702D8300039924 /* videoCapturer.m */,
+				C07EF35F1E7033BA00039924 /* videoCapturerDelegate.h */,
+			);
+			path = videoCapture;
+			sourceTree = "<group>";
+		};
+		C0865A391DF154BC008C50DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0865A3D1DF154BC008C50DB /* libGLImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C09C01C81E7183C20008AE0D /* baseClass */ = {
+			isa = PBXGroup;
+			children = (
+				C09C01C91E7183D90008AE0D /* dataController.h */,
+				C09C01CA1E7183D90008AE0D /* dataController.m */,
+			);
+			name = baseClass;
+			path = ../baseClass;
+			sourceTree = "<group>";
+		};
+		C09C01F61E7787140008AE0D /* offScreenPaint */ = {
+			isa = PBXGroup;
+			children = (
+				C09C01F71E7788E70008AE0D /* offScreenContext.h */,
+				C09C01F81E7788E70008AE0D /* offScreenContext.m */,
+			);
+			path = offScreenPaint;
+			sourceTree = "<group>";
+		};
+		C09C02021E7810290008AE0D /* audioCapture */ = {
+			isa = PBXGroup;
+			children = (
+				C09C02031E7810430008AE0D /* AudioCapturer.h */,
+				C09C02041E7810430008AE0D /* AudioCapturer.m */,
+			);
+			path = audioCapture;
+			sourceTree = "<group>";
+		};
+		C09C024F1E80EB200008AE0D /* supportingModel */ = {
+			isa = PBXGroup;
+			children = (
+				C09C02021E7810290008AE0D /* audioCapture */,
+				C09C01F61E7787140008AE0D /* offScreenPaint */,
+				C07EF35B1E702D3400039924 /* videoCapture */,
+				C07EF35A1E702C2300039924 /* GLPaint */,
+				C07EF34C1E70234D00039924 /* videoCoder */,
+			);
+			path = supportingModel;
+			sourceTree = "<group>";
+		};
+		C09C02511E80ECCC0008AE0D /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C069A1F71E98E7C000D678EC /* player */,
+				C09C01C81E7183C20008AE0D /* baseClass */,
+				C09C02561E80ED4E0008AE0D /* camera */,
+				C09C02521E80ED410008AE0D /* album */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		C09C02521E80ED410008AE0D /* album */ = {
+			isa = PBXGroup;
+			children = (
+				C09C02531E80ED410008AE0D /* AlbumDataController.h */,
+				C09C02541E80ED410008AE0D /* AlbumDataController.m */,
+			);
+			path = album;
+			sourceTree = "<group>";
+		};
+		C09C02561E80ED4E0008AE0D /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				C09C02571E80ED4E0008AE0D /* CameraDataController.h */,
+				C09C02581E80ED4E0008AE0D /* CameraDataController.m */,
+				C09C02591E80ED4E0008AE0D /* ViewController.h */,
+				C09C025A1E80ED4E0008AE0D /* ViewController.m */,
+			);
+			path = camera;
+			sourceTree = "<group>";
+		};
+		C09C025D1E80ED830008AE0D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C09C025E1E80EDF80008AE0D /* camera */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		C09C025E1E80EDF80008AE0D /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				C09C02381E7ECC6E0008AE0D /* RecordButton.h */,
+				C09C02391E7ECC6E0008AE0D /* RecordButton.m */,
+				C09C025F1E80F14F0008AE0D /* DanmakuInputView.h */,
+				C09C02601E80F14F0008AE0D /* DanmakuInputView.m */,
+			);
+			path = camera;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +412,7 @@
 				C06B03481D7BF9100031B49E /* Sources */,
 				C06B03491D7BF9100031B49E /* Frameworks */,
 				C06B034A1D7BF9100031B49E /* Resources */,
+				C07EF2E31E6A718400039924 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -210,6 +470,14 @@
 				TargetAttributes = {
 					C06B034B1D7BF9100031B49E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 8Z759VC4LS;
+						DevelopmentTeamName = "Guangzhou AiShang culture media Co., Ltd.";
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					C06B03671D7BF9110031B49E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -232,6 +500,12 @@
 			mainGroup = C06B03431D7BF9100031B49E;
 			productRefGroup = C06B034D1D7BF9100031B49E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C0865A391DF154BC008C50DB /* Products */;
+					ProjectRef = C0865A381DF154BC008C50DB /* GLImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C06B034B1D7BF9100031B49E /* openGLDemo */,
@@ -241,11 +515,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		C0865A3D1DF154BC008C50DB /* libGLImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGLImage.a;
+			remoteRef = C0865A3C1DF154BC008C50DB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		C06B034A1D7BF9100031B49E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09F5ECE1EAC4D25007541AC /* demo.m4v in Resources */,
+				C069A2141E9D09AF00D678EC /* vr.png in Resources */,
 				C06B03621D7BF9100031B49E /* LaunchScreen.storyboard in Resources */,
 				C06B035F1D7BF9100031B49E /* Assets.xcassets in Resources */,
 				C06B035A1D7BF9100031B49E /* Main.storyboard in Resources */,
@@ -273,10 +559,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C06B03571D7BF9100031B49E /* ViewController.m in Sources */,
+				C069A1FB1E98E7F300D678EC /* VRPlayerViewController.m in Sources */,
+				C09C025C1E80ED4E0008AE0D /* ViewController.m in Sources */,
+				C07EF3571E7028EE00039924 /* VideoEncoder.m in Sources */,
+				C07EF3511E7028E300039924 /* UIImage+scaledToSize.m in Sources */,
+				C08BFA181E03E997000BC6A5 /* GLBeautyPainter.m in Sources */,
+				C09C02551E80ED410008AE0D /* AlbumDataController.m in Sources */,
+				C09C020E1E7929320008AE0D /* Utility.m in Sources */,
+				C07EF35E1E702D8300039924 /* videoCapturer.m in Sources */,
+				C09C023A1E7ECC6E0008AE0D /* RecordButton.m in Sources */,
+				C07EF3561E7028EE00039924 /* VideoDecoder.m in Sources */,
 				C06B035D1D7BF9100031B49E /* openGLDemo.xcdatamodeld in Sources */,
+				C06B038D1D7BF95B0031B49E /* openGLCubeView.m in Sources */,
+				C09C02611E80F14F0008AE0D /* DanmakuInputView.m in Sources */,
 				C06B03541D7BF9100031B49E /* AppDelegate.m in Sources */,
+				C09C025B1E80ED4E0008AE0D /* CameraDataController.m in Sources */,
+				C09C02051E7810430008AE0D /* AudioCapturer.m in Sources */,
+				C07E50911E9274800035F14E /* GLYUVPainter.m in Sources */,
+				C09C01CB1E7183D90008AE0D /* dataController.m in Sources */,
+				C069A1FE1E98EDE300D678EC /* GLVRPainter.m in Sources */,
+				C09C01F91E7788E70008AE0D /* offScreenContext.m in Sources */,
 				C06B03511D7BF9100031B49E /* main.m in Sources */,
+				C06B038E1D7BF95B0031B49E /* openGLDemo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +712,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -417,9 +722,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8Z759VC4LS;
+				ENABLE_BITCODE = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/openGLDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/fangyang/GitHub/GLImage/GLImage;
 				INFOPLIST_FILE = openGLDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.openGLDemo;
+				ONLY_ACTIVE_ARCH = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeffjuliet.danmakucamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -428,10 +742,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8Z759VC4LS;
+				ENABLE_BITCODE = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/openGLDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/fangyang/GitHub/GLImage/GLImage;
 				INFOPLIST_FILE = openGLDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.openGLDemo;
+				ONLY_ACTIVE_ARCH = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeffjuliet.danmakucamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -500,6 +825,7 @@
 				C06B037E1D7BF9110031B49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C06B037F1D7BF9110031B49E /* Build configuration list for PBXNativeTarget "openGLDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +834,7 @@
 				C06B03811D7BF9110031B49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C06B03821D7BF9110031B49E /* Build configuration list for PBXNativeTarget "openGLDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +843,7 @@
 				C06B03841D7BF9110031B49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -526,6 +854,16 @@
 				C06B035C1D7BF9100031B49E /* openGLDemo.xcdatamodel */,
 			);
 			currentVersion = C06B035C1D7BF9100031B49E /* openGLDemo.xcdatamodel */;
+			path = openGLDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		C06B03871D7BF95B0031B49E /* openGLDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C06B03881D7BF95B0031B49E /* openGLDemo.xcdatamodel */,
+			);
+			currentVersion = C06B03881D7BF95B0031B49E /* openGLDemo.xcdatamodel */;
 			path = openGLDemo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
