@@ -37,6 +37,16 @@ NSString * const kMBeautyV2FragmentShaderString = SHADER
  uniform float uMixFactor;
  uniform float uFactor;
  
+ float highpass(float dis)
+ {
+     if(dis <= 0.5) {
+         dis = dis * dis * 2.0;
+     } else {
+         dis = 1.0 - ((1.0 - dis)*(1.0 - dis) * 2.0);
+     }
+     return dis;
+ }
+ 
  void main() {
      //gl_FragColor = texture2D(inputImageTexture, inputTextureCoordinate);
      //return;
@@ -96,39 +106,14 @@ NSString * const kMBeautyV2FragmentShaderString = SHADER
      centralColor = texture2D(inputImageTexture, inputTextureCoordinate).rgb;
      float dis = centralColor.g - sampleColor + 0.5;
      
-     if(dis <= 0.5) {
-         dis = dis * dis * 2.0;
-     } else {
-         dis = 1.0 - ((1.0 - dis)*(1.0 - dis) * 2.0);
+     for( int i = 0;i<5;++i )
+     {
+         dis = highpass(dis);
      }
      
-     if(dis <= 0.5) {
-         dis = dis * dis * 2.0;
-     } else {
-         dis = 1.0 - ((1.0 - dis)*(1.0 - dis) * 2.0);
-     }
+     float aa = 1.07;
+     vec3 smoothColor = centralColor * aa - vec3(dis) * (aa-1.0);
      
-     if(dis <= 0.5) {
-         dis = dis * dis * 2.0;
-     } else {
-         dis = 1.0 - ((1.0 - dis)*(1.0 - dis) * 2.0);
-     }
-     
-     if(dis <= 0.5) {
-         dis = dis * dis * 2.0;
-     } else {
-         dis = 1.0 - ((1.0 - dis)*(1.0 - dis) * 2.0);
-     }
-     
-     if(dis <= 0.5) {
-         dis = dis * dis * 2.0;
-     } else {
-         dis = 1.0 - ((1.0 - dis)*(1.0 - dis) * 2.0);
-     }
-     
-     float aa = 1.03;
-     vec3 smoothColor = centralColor * 1.0;// aa - vec3(dis) * (aa-1.0);
-
      float hueFactor = uHueFactor;
      float smoothFactor = uSmoothFactor;
      float rouguangFactor = uRouguangFactor;
@@ -137,19 +122,23 @@ NSString * const kMBeautyV2FragmentShaderString = SHADER
      float hue = dot(smoothColor, vec3(0.299, 0.587, 0.114));
      aa = 1.0 + pow(hue, hueFactor) * 0.1;
      smoothColor = centralColor* aa  - vec3(dis) * (aa - 1.0);
-//     gl_FragColor = vec4(smoothColor,1.0);
      
      smoothColor.r = clamp(pow(smoothColor.r, smoothFactor), 0.0, 1.0);
      smoothColor.g = clamp(pow(smoothColor.g, smoothFactor), 0.0, 1.0);
      smoothColor.b = clamp(pow(smoothColor.b, smoothFactor), 0.0, 1.0);
-     
+     //gl_FragColor = vec4(smoothColor,1.0);
+     //return;
      vec3 lvse = vec3(1.0) - (vec3(1.0) - smoothColor) * (vec3(1.0) - centralColor);
+     gl_FragColor = vec4(lvse,1.0);
+     //return;
      vec3 bianliang = max(smoothColor, centralColor);
      vec3 rouguang = 2.0 * centralColor * smoothColor + centralColor * centralColor - 2.0 * centralColor * centralColor * smoothColor;
      
      gl_FragColor = vec4(mix(centralColor, lvse, pow(hue, hueFactor)), 1.0);
+     
      gl_FragColor.rgb = mix(gl_FragColor.rgb, bianliang, pow(hue, hueFactor));
      gl_FragColor.rgb = mix(gl_FragColor.rgb, rouguang, rouguangFactor);
+     //return;
      mat3 saturateMatrix = mat3(1.0102, -0.0598, -0.061,
                                 -0.0774, 1.0826, -0.0786,
                                 -0.0228, -0.0228, 1.0772);

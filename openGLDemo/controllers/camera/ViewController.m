@@ -123,7 +123,7 @@
 {
     [super viewWillAppear:animated];
     
-    //return;
+    return;
     if( !self.datacontroller )
     {
         self.datacontroller = [CameraDataController new];
@@ -140,8 +140,8 @@
 {
     [super viewDidAppear:animated];
     
-    /*VRPlayerViewController* vc = [VRPlayerViewController new];
-    [self presentViewController:vc animated:YES completion:nil];*/
+    VRPlayerViewController* vc = [VRPlayerViewController new];
+    [self presentViewController:vc animated:YES completion:nil];/**/
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator

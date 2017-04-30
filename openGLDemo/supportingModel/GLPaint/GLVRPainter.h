@@ -10,4 +10,6 @@
 
 @interface GLVRPainter : GLPainter
 
+- (void)rotate:(CGSize)angleSize;
+
 @end

@@ -37,6 +37,7 @@
 		C09C025C1E80ED4E0008AE0D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C025A1E80ED4E0008AE0D /* ViewController.m */; };
 		C09C02611E80F14F0008AE0D /* DanmakuInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02601E80F14F0008AE0D /* DanmakuInputView.m */; };
 		C09F5ECE1EAC4D25007541AC /* demo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = C09F5ECD1EAC4D25007541AC /* demo.m4v */; };
+		C0B5B51C1EB5E74D00EE08BB /* VrPlayerAudioDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5B51B1EB5E74D00EE08BB /* VrPlayerAudioDataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		C09C025F1E80F14F0008AE0D /* DanmakuInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DanmakuInputView.h; sourceTree = "<group>"; };
 		C09C02601E80F14F0008AE0D /* DanmakuInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DanmakuInputView.m; sourceTree = "<group>"; };
 		C09F5ECD1EAC4D25007541AC /* demo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = demo.m4v; path = ../../../../Downloads/demo.m4v; sourceTree = "<group>"; };
+		C0B5B51A1EB5E74C00EE08BB /* VrPlayerAudioDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VrPlayerAudioDataController.h; sourceTree = "<group>"; };
+		C0B5B51B1EB5E74D00EE08BB /* VrPlayerAudioDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VrPlayerAudioDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 			children = (
 				C069A1F91E98E7F300D678EC /* VRPlayerViewController.h */,
 				C069A1FA1E98E7F300D678EC /* VRPlayerViewController.m */,
+				C0B5B51A1EB5E74C00EE08BB /* VrPlayerAudioDataController.h */,
+				C0B5B51B1EB5E74D00EE08BB /* VrPlayerAudioDataController.m */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				C07EF3571E7028EE00039924 /* VideoEncoder.m in Sources */,
 				C07EF3511E7028E300039924 /* UIImage+scaledToSize.m in Sources */,
 				C08BFA181E03E997000BC6A5 /* GLBeautyPainter.m in Sources */,
+				C0B5B51C1EB5E74D00EE08BB /* VrPlayerAudioDataController.m in Sources */,
 				C09C02551E80ED410008AE0D /* AlbumDataController.m in Sources */,
 				C09C020E1E7929320008AE0D /* Utility.m in Sources */,
 				C07EF35E1E702D8300039924 /* videoCapturer.m in Sources */,

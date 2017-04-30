@@ -9,6 +9,7 @@
 #import "GLVRPainter.h"
 #import <GLKit/GLKit.h>
 #define PI 3.141592653
+#define FOV 90
 
 @interface GLVRPainter()
 {
@@ -17,6 +18,8 @@
     GLfloat* textureCoors;
     GLushort numIndices;
     GLushort numVertices;
+    CGFloat yOffset;
+    CGFloat xOffset;
 }
 
 @property (nonatomic,assign) GLuint vertexIndicesBufferID;
@@ -33,6 +36,8 @@
     if( self )
     {
         [_program use];
+        yOffset = 80;
+        xOffset = 0;
         [self updateMatrix];
         [self config];
     }
@@ -68,12 +73,27 @@
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);
 }
 
+- (void)rotate:(CGSize)angleSize
+{
+    xOffset += angleSize.width;
+    yOffset += angleSize.height;
+    if( xOffset < -45 )
+    {
+        xOffset = -45;
+    }
+    else if( xOffset > 45 )
+    {
+        xOffset = 45;
+    }
+    [_program use];
+    [self updateMatrix];
+}
 #pragma mark utility methods
 - (void)config
 {
     GLushort latitudeSlice = 70, longitudeSlice = 124;
     numVertices = (latitudeSlice-1)*(longitudeSlice+1) + 2;
-    numIndices = latitudeSlice*longitudeSlice*6;
+    numIndices = latitudeSlice*longitudeSlice*6-2*longitudeSlice;
     if( !vertices )
     {
         vertices =(GLfloat*)malloc(numVertices*3*sizeof(GLfloat));
@@ -118,28 +138,29 @@
     {
         for( int m = 0;  m < longitudeSlice; ++m )
         {
-            GLushort* index = &indices[(k*(longitudeSlice+1)+m)*6];
             if( k == 0 )
             {
+                GLushort* index = &indices[m*3];
                 index[0] = m+2;
                 index[1] = m +3;
                 index[2] = 0;
-                index[3] = index[1];
+                /*index[3] = index[1];
                 index[4] = index[2];
-                index[5] = 0;
+                index[5] = 0;*/
             }
             else if( k == latitudeSlice-1 )
             {
-                
-                index[0] = 0;
+                GLushort* index = &indices[longitudeSlice*3+m*3];
+                /*index[0] = 0;
                 index[1] = 0;
-                index[2] = m + (longitudeSlice+1)*(k-1) + 2;
-                index[3] = index[1];
-                index[4] = index[2];
-                index[5] = m+1 + (longitudeSlice+1)*(k-1) +2;
+                index[2] = m + (longitudeSlice+1)*(k-1) + 2;*/
+                index[0] = 0;//index[1];
+                index[1] = m + (longitudeSlice+1)*(k-1) + 2;//index[2];
+                index[2] = m+1 + (longitudeSlice+1)*(k-1) +2;
             }
             else
             {
+                GLushort* index = &indices[(k*longitudeSlice+m)*6];
                 index[0] = m+(longitudeSlice+1)*k+2;
                 index[1] = (m+1) + (longitudeSlice+1)*k+2;
                 index[2] = m + (longitudeSlice+1)*(k-1)+2;
@@ -165,13 +186,13 @@
 
 - (void)updateMatrix;
 {
-    static float offset = 80;
-    GLKMatrix4 projectionmatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), 16.0/9, 0.1, 2);
-    GLKMatrix4 modelviewmatrix = GLKMatrix4RotateY(GLKMatrix4Identity, PI*offset/100);
+    GLKMatrix4 projectionmatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(FOV), 16.0/9, 0.1, 2);
+    GLKMatrix4 modelviewmatrix = GLKMatrix4Identity;
+    modelviewmatrix = GLKMatrix4RotateX(modelviewmatrix, GLKMathDegreesToRadians(xOffset));
+    modelviewmatrix = GLKMatrix4RotateY(modelviewmatrix, GLKMathDegreesToRadians(yOffset));
     GLKMatrix4 mvp = GLKMatrix4Multiply(projectionmatrix, modelviewmatrix);
     GLuint mvpMatrixLocation = [_program getUniformLocation:@"mvpMatrix"];
     glUniformMatrix4fv(mvpMatrixLocation, 1, GL_FALSE, mvp.m);
-    offset += 1;
 }
 
 - (void)genVertices;

@@ -19,6 +19,7 @@
 @property (nonatomic,strong) GLFramebuffer* framebuffer;
 @property (nonatomic,strong) GLVideoReader* videoReader;
 @property (nonatomic,strong) NSTimer* timerPlayer;
+@property (nonatomic,assign) CGPoint touchBeginPoint;
 
 @end
 
@@ -40,6 +41,33 @@
     self.imgview.frame = self.view.bounds;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch* touch = [touches anyObject];
+    self.touchBeginPoint = [touch locationInView:self.view];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    CGPoint touchBeginPoint = [[touches anyObject] locationInView:self.view];
+    CGFloat xoffset = touchBeginPoint.x - self.touchBeginPoint.x;
+    CGFloat yoffset = touchBeginPoint.y - self.touchBeginPoint.y;
+    self.touchBeginPoint = touchBeginPoint;
+    dispatch_async_on_glcontextqueue(^{
+        [self.painter rotate:CGSizeMake(-yoffset/10, -xoffset/10)];
+    });
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    CGPoint touchBeginPoint = [[touches anyObject] locationInView:self.view];
+    CGFloat xoffset = touchBeginPoint.x - self.touchBeginPoint.x;
+    CGFloat yoffset = touchBeginPoint.y - self.touchBeginPoint.y;
+    dispatch_async_on_glcontextqueue(^{
+        [self.painter rotate:CGSizeMake(-yoffset/10, -xoffset/10)];
+    });
+}
+
 - (void)timeout:(NSTimer*)timer
 {
     dispatch_async_on_glcontextqueue(^{
@@ -58,6 +86,12 @@
                 [self.imgview setFrameBuffer:_framebuffer];
                 [self.imgview display];
             }
+            CFRelease(buf);
+        }
+        buf = [self.videoReader getNextAudioSampleBuffer];
+        if( buf )
+        {
+            
             CFRelease(buf);
         }
     });
