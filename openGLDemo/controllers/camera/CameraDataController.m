@@ -17,6 +17,7 @@
 #import <Photos/Photos.h>
 #import "offScreenContext.h"
 #import "GLYUVPainter.h"
+#import "ScreenToast.h"
 
 @interface CameraDataController()
 
@@ -28,7 +29,6 @@
 @property (nonatomic,strong) GLBeautyPainter* beautyPainter;
 @property (nonatomic,strong) VideoEncoder* encoder;
 @property (nonatomic,strong) VideoDecoder* decoder;
-@property (nonatomic,strong) GLProgram* yuvConversionProgram;
 @property (nonatomic,assign) BOOL isCaptureYUV;
 @property (nonatomic,strong) GLTexture* decodeTexture;
 @property (nonatomic,strong) GLFramebuffer* decodeyuvbuffer;
@@ -97,16 +97,21 @@
         self.videoCapturer.delegate = self;
     }
     
+    if( [self.videoCapturer isCapturing] )
+    {
+        NSLog(@"start capture while capturing");
+        return;
+    }
     self.isCaptureYUV = YES;
     self.simpleView = imgView;
     [self.videoCapturer startCapture];
     
     __typeof(self) __weak wself = self;
     dispatch_async_on_glcontextqueue(^{
-        [[GLContext sharedGLContext] useGLContext];
-        wself.buffer = [[GLFramebuffer alloc] initWithSize:portraitSize];
+        BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+        wself.buffer = [[GLFramebuffer alloc] initWithSize:isPortrait?portraitSize:landscapeSize];
         [wself.buffer useFramebuffer];
-        wself.yuvbuffer = [[GLFramebuffer alloc] initWithSize:portraitSize];
+        wself.yuvbuffer = [[GLFramebuffer alloc] initWithSize:isPortrait?portraitSize:landscapeSize];
         wself.simpleView.backgroundColor = [UIColor clearColor];
         wself.beautyPainter = [[GLBeautyPainter alloc] initWithVertexShader:kBeautyVertextShaderString fragmentShader:kMBeautyV2FragmentShaderString];
         wself.beautyPainter.bIsForPresent = NO;
@@ -115,12 +120,15 @@
         wself.yuvPainter = [GLYUVPainter painterWithYUVType:YUVTypeBT709videoRange];
         wself.decodeyuvbuffer = [[GLFramebuffer alloc] initWithSize:CGSizeMake(360, 640)];
         
-        wself.preRenderBuffer = [[GLFramebuffer alloc] initWithSize:portraitSize];
+        wself.preRenderBuffer = [[GLFramebuffer alloc] initWithSize:isPortrait?portraitSize:landscapeSize];
         wself.preRenderPainter = [[GLPainter alloc] initWithVertexShader:defVertexShader fragmentShader:defFragmentShader];
-        
-        
     });
     
+}
+
+- (void)stopCapture
+{
+    [self.videoCapturer stopCapture];
 }
 
 - (void)switchCamera
@@ -132,17 +140,17 @@
 {
     [self.videoCapturer rotateToOrientation:orientation];
     dispatch_async_on_glcontextqueue(^{
-        if( orientation == AVCaptureVideoOrientationLandscapeRight )
-        {
-            self.buffer = [[GLFramebuffer alloc] initWithSize:landscapeSize];
-            self.yuvbuffer = [[GLFramebuffer alloc] initWithSize:landscapeSize];
-            self.preRenderBuffer = [[GLFramebuffer alloc] initWithSize:landscapeSize];
-        }
-        else
+        if( orientation == AVCaptureVideoOrientationPortrait )
         {
             self.buffer = [[GLFramebuffer alloc] initWithSize:portraitSize];
             self.yuvbuffer = [[GLFramebuffer alloc] initWithSize:portraitSize];
             self.preRenderBuffer = [[GLFramebuffer alloc] initWithSize:portraitSize];
+        }
+        else
+        {
+            self.buffer = [[GLFramebuffer alloc] initWithSize:landscapeSize];
+            self.yuvbuffer = [[GLFramebuffer alloc] initWithSize:landscapeSize];
+            self.preRenderBuffer = [[GLFramebuffer alloc] initWithSize:landscapeSize];
         }
     });
 }
@@ -165,7 +173,7 @@
     }
     NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"record_%@.mov",@([Utility curTimeStamp])]];
-    _assetWriter = [[GLVideoAssetWriter alloc] initWithURL:url withAudio:YES videoSize:(self.videoCapturer.orientation == AVCaptureVideoOrientationLandscapeRight?landscapeSize:portraitSize)];
+    _assetWriter = [[GLVideoAssetWriter alloc] initWithURL:url withAudio:YES videoSize:(self.videoCapturer.orientation == AVCaptureVideoOrientationPortrait?portraitSize:landscapeSize)];
     
     CGSize size = portraitSize;
     if( [UIApplication sharedApplication].statusBarOrientation != UIInterfaceOrientationPortrait )
@@ -195,6 +203,7 @@
                         }];
                     };
                     PHAuthorizationStatus stat = [PHPhotoLibrary authorizationStatus] ;
+                    
                     if ( stat == PHAuthorizationStatusNotDetermined ) {
                         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
                             if ( status == PHAuthorizationStatusAuthorized ) {
@@ -205,6 +214,10 @@
                     else if( stat == PHAuthorizationStatusAuthorized )
                     {
                         BLOCK_INVOKE(fetchblock);
+                    }
+                    else
+                    {
+                        [[ScreenToast sharedInstance] showToast:@"无法保存视频，请到设置中打开相册权限"];
                     }
                 });
             }];
@@ -235,7 +248,7 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    if( [UIApplication sharedApplication].applicationState == UIApplicationStateBackground )
+    if( [UIApplication sharedApplication].applicationState == UIApplicationStateBackground && sampleBuffer )
     {
         return;
     }
@@ -251,7 +264,6 @@
         {
             _texture = [GLTexture glTextureWithPixelBuffer:CMSampleBufferGetImageBuffer(sampleBuffer) isYUV:YES];
             [_yuvbuffer useFramebuffer];
-            [_yuvConversionProgram use];
             CVPixelBufferRef pb = CMSampleBufferGetImageBuffer(sampleBuffer);
             CFDictionaryRef dic;
             dic = CVBufferGetAttachments(pb,kCMAttachmentMode_ShouldPropagate);

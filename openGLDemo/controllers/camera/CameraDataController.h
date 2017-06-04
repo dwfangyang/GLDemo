@@ -21,6 +21,8 @@
 
 - (void)startCaptureWith:(GLSimplestImageView*)imgView;
 
+- (void)stopCapture;
+
 - (void)rotateToOrientation:(AVCaptureVideoOrientation)orientation;
 
 - (void)startEncodeVideoAndAudio;

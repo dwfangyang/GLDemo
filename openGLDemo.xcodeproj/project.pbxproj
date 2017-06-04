@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0005CF21EB8AC6A006D6ADD /* AlbumVideoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0005CF11EB8AC6A006D6ADD /* AlbumVideoPickerController.m */; };
+		C02BE9EE1EC34AF9001F9D88 /* ScreenToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C02BE9ED1EC34AF9001F9D88 /* ScreenToast.m */; };
 		C069A1FB1E98E7F300D678EC /* VRPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C069A1FA1E98E7F300D678EC /* VRPlayerViewController.m */; };
 		C069A1FE1E98EDE300D678EC /* GLVRPainter.m in Sources */ = {isa = PBXBuildFile; fileRef = C069A1FD1E98EDE300D678EC /* GLVRPainter.m */; };
 		C069A2141E9D09AF00D678EC /* vr.png in Resources */ = {isa = PBXBuildFile; fileRef = C069A2131E9D09AF00D678EC /* vr.png */; };
@@ -19,7 +21,6 @@
 		C06B036D1D7BF9110031B49E /* openGLDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B036C1D7BF9110031B49E /* openGLDemoTests.m */; };
 		C06B03781D7BF9110031B49E /* openGLDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03771D7BF9110031B49E /* openGLDemoUITests.m */; };
 		C06B038D1D7BF95B0031B49E /* openGLCubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B03861D7BF95B0031B49E /* openGLCubeView.m */; };
-		C06B038E1D7BF95B0031B49E /* openGLDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C06B03871D7BF95B0031B49E /* openGLDemo.xcdatamodeld */; };
 		C07E50911E9274800035F14E /* GLYUVPainter.m in Sources */ = {isa = PBXBuildFile; fileRef = C07E50901E9274800035F14E /* GLYUVPainter.m */; };
 		C07EF2ED1E6C15C300039924 /* libGLImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0865A3D1DF154BC008C50DB /* libGLImage.a */; };
 		C07EF3511E7028E300039924 /* UIImage+scaledToSize.m in Sources */ = {isa = PBXBuildFile; fileRef = C07EF3501E7028E300039924 /* UIImage+scaledToSize.m */; };
@@ -32,12 +33,11 @@
 		C09C02051E7810430008AE0D /* AudioCapturer.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02041E7810430008AE0D /* AudioCapturer.m */; };
 		C09C020E1E7929320008AE0D /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C020D1E7929320008AE0D /* Utility.m */; };
 		C09C023A1E7ECC6E0008AE0D /* RecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02391E7ECC6E0008AE0D /* RecordButton.m */; };
-		C09C02551E80ED410008AE0D /* AlbumDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02541E80ED410008AE0D /* AlbumDataController.m */; };
 		C09C025B1E80ED4E0008AE0D /* CameraDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02581E80ED4E0008AE0D /* CameraDataController.m */; };
 		C09C025C1E80ED4E0008AE0D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C025A1E80ED4E0008AE0D /* ViewController.m */; };
 		C09C02611E80F14F0008AE0D /* DanmakuInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C09C02601E80F14F0008AE0D /* DanmakuInputView.m */; };
-		C09F5ECE1EAC4D25007541AC /* demo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = C09F5ECD1EAC4D25007541AC /* demo.m4v */; };
 		C0B5B51C1EB5E74D00EE08BB /* VrPlayerAudioDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5B51B1EB5E74D00EE08BB /* VrPlayerAudioDataController.m */; };
+		C0E7AC7F1EE3069400769787 /* PermissionInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E7AC7E1EE3069300769787 /* PermissionInterceptor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +78,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C0005CF01EB8AC6A006D6ADD /* AlbumVideoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumVideoPickerController.h; sourceTree = "<group>"; };
+		C0005CF11EB8AC6A006D6ADD /* AlbumVideoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumVideoPickerController.m; sourceTree = "<group>"; };
+		C02BE9EC1EC34AF9001F9D88 /* ScreenToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenToast.h; sourceTree = "<group>"; };
+		C02BE9ED1EC34AF9001F9D88 /* ScreenToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenToast.m; sourceTree = "<group>"; };
 		C069A1F91E98E7F300D678EC /* VRPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRPlayerViewController.h; sourceTree = "<group>"; };
 		C069A1FA1E98E7F300D678EC /* VRPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRPlayerViewController.m; sourceTree = "<group>"; };
 		C069A1FC1E98EDE300D678EC /* GLVRPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVRPainter.h; sourceTree = "<group>"; };
@@ -100,7 +104,6 @@
 		C06B03791D7BF9110031B49E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C06B03851D7BF95B0031B49E /* openGLCubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openGLCubeView.h; sourceTree = "<group>"; };
 		C06B03861D7BF95B0031B49E /* openGLCubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openGLCubeView.m; sourceTree = "<group>"; };
-		C06B03881D7BF95B0031B49E /* openGLDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = openGLDemo.xcdatamodel; sourceTree = "<group>"; };
 		C07E508F1E9274800035F14E /* GLYUVPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLYUVPainter.h; sourceTree = "<group>"; };
 		C07E50901E9274800035F14E /* GLYUVPainter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLYUVPainter.m; sourceTree = "<group>"; };
 		C07EF2D11E6A718400039924 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
@@ -130,17 +133,16 @@
 		C09C020D1E7929320008AE0D /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		C09C02381E7ECC6E0008AE0D /* RecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordButton.h; sourceTree = "<group>"; };
 		C09C02391E7ECC6E0008AE0D /* RecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordButton.m; sourceTree = "<group>"; };
-		C09C02531E80ED410008AE0D /* AlbumDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDataController.h; sourceTree = "<group>"; };
-		C09C02541E80ED410008AE0D /* AlbumDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDataController.m; sourceTree = "<group>"; };
 		C09C02571E80ED4E0008AE0D /* CameraDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDataController.h; sourceTree = "<group>"; };
 		C09C02581E80ED4E0008AE0D /* CameraDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDataController.m; sourceTree = "<group>"; };
 		C09C02591E80ED4E0008AE0D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C09C025A1E80ED4E0008AE0D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C09C025F1E80F14F0008AE0D /* DanmakuInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DanmakuInputView.h; sourceTree = "<group>"; };
 		C09C02601E80F14F0008AE0D /* DanmakuInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DanmakuInputView.m; sourceTree = "<group>"; };
-		C09F5ECD1EAC4D25007541AC /* demo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = demo.m4v; path = ../../../../Downloads/demo.m4v; sourceTree = "<group>"; };
 		C0B5B51A1EB5E74C00EE08BB /* VrPlayerAudioDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VrPlayerAudioDataController.h; sourceTree = "<group>"; };
 		C0B5B51B1EB5E74D00EE08BB /* VrPlayerAudioDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VrPlayerAudioDataController.m; sourceTree = "<group>"; };
+		C0E7AC7D1EE3069300769787 /* PermissionInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionInterceptor.h; sourceTree = "<group>"; };
+		C0E7AC7E1EE3069300769787 /* PermissionInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionInterceptor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,13 +206,11 @@
 		C06B034E1D7BF9100031B49E /* openGLDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C09F5ECD1EAC4D25007541AC /* demo.m4v */,
 				C069A2131E9D09AF00D678EC /* vr.png */,
 				C09C025D1E80ED830008AE0D /* views */,
 				C09C02511E80ECCC0008AE0D /* controllers */,
 				C09C024F1E80EB200008AE0D /* supportingModel */,
 				C07EF34D1E70238500039924 /* utilities */,
-				C06B03871D7BF95B0031B49E /* openGLDemo.xcdatamodeld */,
 				C06B03521D7BF9100031B49E /* AppDelegate.h */,
 				C06B03531D7BF9100031B49E /* AppDelegate.m */,
 				C06B03581D7BF9100031B49E /* Main.storyboard */,
@@ -280,6 +280,8 @@
 				C07EF3501E7028E300039924 /* UIImage+scaledToSize.m */,
 				C09C020C1E7929320008AE0D /* Utility.h */,
 				C09C020D1E7929320008AE0D /* Utility.m */,
+				C02BE9EC1EC34AF9001F9D88 /* ScreenToast.h */,
+				C02BE9ED1EC34AF9001F9D88 /* ScreenToast.m */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -348,6 +350,7 @@
 		C09C024F1E80EB200008AE0D /* supportingModel */ = {
 			isa = PBXGroup;
 			children = (
+				C0E7AC7B1EE3065B00769787 /* interceptor */,
 				C09C02021E7810290008AE0D /* audioCapture */,
 				C09C01F61E7787140008AE0D /* offScreenPaint */,
 				C07EF35B1E702D3400039924 /* videoCapture */,
@@ -371,8 +374,8 @@
 		C09C02521E80ED410008AE0D /* album */ = {
 			isa = PBXGroup;
 			children = (
-				C09C02531E80ED410008AE0D /* AlbumDataController.h */,
-				C09C02541E80ED410008AE0D /* AlbumDataController.m */,
+				C0005CF01EB8AC6A006D6ADD /* AlbumVideoPickerController.h */,
+				C0005CF11EB8AC6A006D6ADD /* AlbumVideoPickerController.m */,
 			);
 			path = album;
 			sourceTree = "<group>";
@@ -405,6 +408,15 @@
 				C09C02601E80F14F0008AE0D /* DanmakuInputView.m */,
 			);
 			path = camera;
+			sourceTree = "<group>";
+		};
+		C0E7AC7B1EE3065B00769787 /* interceptor */ = {
+			isa = PBXGroup;
+			children = (
+				C0E7AC7D1EE3069300769787 /* PermissionInterceptor.h */,
+				C0E7AC7E1EE3069300769787 /* PermissionInterceptor.m */,
+			);
+			path = interceptor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,7 +547,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C09F5ECE1EAC4D25007541AC /* demo.m4v in Resources */,
 				C069A2141E9D09AF00D678EC /* vr.png in Resources */,
 				C06B03621D7BF9100031B49E /* LaunchScreen.storyboard in Resources */,
 				C06B035F1D7BF9100031B49E /* Assets.xcassets in Resources */,
@@ -565,12 +576,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C069A1FB1E98E7F300D678EC /* VRPlayerViewController.m in Sources */,
+				C0005CF21EB8AC6A006D6ADD /* AlbumVideoPickerController.m in Sources */,
+				C0E7AC7F1EE3069400769787 /* PermissionInterceptor.m in Sources */,
 				C09C025C1E80ED4E0008AE0D /* ViewController.m in Sources */,
+				C02BE9EE1EC34AF9001F9D88 /* ScreenToast.m in Sources */,
 				C07EF3571E7028EE00039924 /* VideoEncoder.m in Sources */,
 				C07EF3511E7028E300039924 /* UIImage+scaledToSize.m in Sources */,
 				C08BFA181E03E997000BC6A5 /* GLBeautyPainter.m in Sources */,
 				C0B5B51C1EB5E74D00EE08BB /* VrPlayerAudioDataController.m in Sources */,
-				C09C02551E80ED410008AE0D /* AlbumDataController.m in Sources */,
 				C09C020E1E7929320008AE0D /* Utility.m in Sources */,
 				C07EF35E1E702D8300039924 /* videoCapturer.m in Sources */,
 				C09C023A1E7ECC6E0008AE0D /* RecordButton.m in Sources */,
@@ -586,7 +599,6 @@
 				C069A1FE1E98EDE300D678EC /* GLVRPainter.m in Sources */,
 				C09C01F91E7788E70008AE0D /* offScreenContext.m in Sources */,
 				C06B03511D7BF9100031B49E /* main.m in Sources */,
-				C06B038E1D7BF95B0031B49E /* openGLDemo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,16 +872,6 @@
 				C06B035C1D7BF9100031B49E /* openGLDemo.xcdatamodel */,
 			);
 			currentVersion = C06B035C1D7BF9100031B49E /* openGLDemo.xcdatamodel */;
-			path = openGLDemo.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		C06B03871D7BF95B0031B49E /* openGLDemo.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C06B03881D7BF95B0031B49E /* openGLDemo.xcdatamodel */,
-			);
-			currentVersion = C06B03881D7BF95B0031B49E /* openGLDemo.xcdatamodel */;
 			path = openGLDemo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

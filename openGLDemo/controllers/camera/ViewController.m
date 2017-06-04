@@ -16,8 +16,10 @@
 #import "RecordButton.h"
 #import "DanmakuInputView.h"
 #import <GLKit/GLKit.h>
+#import "PermissionInterceptor.h"
 
 #import "VRPlayerViewController.h"
+#import "AlbumVideoPickerController.h"
 
 @interface ViewController ()
 
@@ -32,6 +34,8 @@
 
 @property (nonatomic,strong) UIButton* btnSwitchCamera;
 
+@property (nonatomic,strong) UIButton* btnVR;
+
 @end
 
 @implementation ViewController
@@ -39,15 +43,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self configNotice];
+    
+    CGRect frame = [UIScreen mainScreen].bounds;
+    
     _simpleView = [[GLSimplestImageView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_simpleView];
     _simpleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
     
-    /*UIImageView* imgview = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    imgview.image = [UIImage imageNamed:@"c2"];
-    [self.view addSubview:imgview];*/
-    
-    CGRect frame = [UIScreen mainScreen].bounds;
     _btnRecord = [[RecordButton alloc] initWithFrame:CGRectMake(frame.size.width/2-40, frame.size.height- 68, 80, 60)];
     [self.view addSubview:_btnRecord];
     
@@ -63,6 +66,23 @@
     //[_btnSwitchCamera setTitleColor:[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1] forState:UIControlStateNormal];
     [_btnSwitchCamera addTarget:self action:@selector(switchCameraBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     _btnSwitchCamera.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
+    
+    _btnVR = [[UIButton alloc] initWithFrame:CGRectMake(frame.size.width-50, frame.size.height-100, 30 , 30)];
+    [self.view addSubview:_btnVR];
+    _btnVR.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin;
+    [_btnVR addTarget:self action:@selector(vrBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [_btnVR.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [_btnVR setTitle:@"VR" forState:UIControlStateNormal];
+    [_btnVR setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+}
+
+- (void)dealloc
+{
+    if( self.viewLoaded )
+    {
+        [self.btnRecord removeTarget:self action:@selector(recordBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self.btnSwitchCamera removeTarget:self action:@selector(switchCameraBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void)configDanmakuBtn;
@@ -90,6 +110,21 @@
     };
 }
 
+- (void)configNotice;
+{
+    CGRect frame = [UIScreen mainScreen].bounds;
+    AVAuthorizationStatus stat = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if( stat == AVAuthorizationStatusDenied )
+    {
+        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width/2-160, frame.size.height/2-20, 320, 40)];
+        [self.view addSubview:label];
+        label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
+        [label setTextAlignment:NSTextAlignmentCenter];
+        label.text = @"此app需要您到设置中开启相机权限";
+        return;
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -110,7 +145,7 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskLandscapeRight;
+    return UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskLandscapeRight|UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 #pragma mark view event
@@ -123,39 +158,37 @@
 {
     [super viewWillAppear:animated];
     
-    return;
     if( !self.datacontroller )
     {
         self.datacontroller = [CameraDataController new];
-        [self.datacontroller startCaptureWith:self.simpleView];
         [[offScreenContext sharedContext] getCircleImageForSize:CGSizeMake(60, 60) Radius:30 Color:[UIColor redColor] withCompletion:^(UIImage *img) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_btnRecord setBackgroundImage:img forState:UIControlStateNormal];
             });
         }];
+        [self.datacontroller startCaptureWith:self.simpleView];
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    VRPlayerViewController* vc = [VRPlayerViewController new];
-    [self presentViewController:vc animated:YES completion:nil];/**/
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
 //    self.simpleView.frame = CGRectMake(0, 0, size.width, size.height);
 //    self.view.frame = CGRectMake(0, 0, size.width, size.height);
-    if( size.width > size.height )
+    UIDeviceOrientation orientation =  [UIDevice currentDevice].orientation;
+    if( orientation != UIDeviceOrientationPortrait )
     {
-        [self.datacontroller rotateToOrientation:AVCaptureVideoOrientationLandscapeRight];
+        [self.datacontroller rotateToOrientation:orientation== UIDeviceOrientationLandscapeLeft?  AVCaptureVideoOrientationLandscapeRight:AVCaptureVideoOrientationLandscapeLeft];
     }
     else
     {
         [self.datacontroller rotateToOrientation:AVCaptureVideoOrientationPortrait];
     }
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 #pragma mark IBAction
@@ -163,16 +196,19 @@
 {
     if( !self.isRecording )
     {
-        self.isRecording = YES;
+        if( ![[PermissionInterceptor sharedInterceptor] requestPermission:PermissionCamera,PermissionAlbum,PermissionAudio] )
+        {
+            return;
+        }
         [self.datacontroller startEncodeVideoAndAudio];
         [self.btnRecord startRecording];
     }
     else
     {
-        self.isRecording = NO;
         [self.datacontroller stopEncodeVideoAndAudio];
         [self.btnRecord stopRecording];
     }
+    self.isRecording = !self.isRecording;
 }
 
 - (void)danmakuBtnTapped:(UIButton*)btn;
@@ -188,6 +224,37 @@
 - (void)switchCameraBtnTapped:(UIButton*)btn;
 {
     [self.datacontroller switchCamera];
+}
+
+- (void)vrBtnTapped:(UIButton*)btn;
+{
+    if( !self.presentedViewController )
+    {
+        [self.datacontroller stopCapture];
+        [self.datacontroller stopEncodeVideoAndAudio];
+        [self.btnRecord stopRecording];
+        
+        AlbumVideoPickerController* controller = [AlbumVideoPickerController new];
+        [self presentViewController:controller animated:YES completion:nil];
+        
+        __weak UIViewController* ctrl = controller;
+        controller.videoPickedBlock = ^(NSURL* videoUrl){
+            if( videoUrl )
+            {
+                VRPlayerViewController* vc = [VRPlayerViewController new];
+                vc.videoUrl = videoUrl;
+                vc.completion = ^{
+                    [self.datacontroller startCaptureWith:self.simpleView];
+                };
+                [self presentViewController:vc animated:YES completion:nil];
+            }
+            else
+            {
+                [self.datacontroller startCaptureWith:self.simpleView];
+                [ctrl dismissViewControllerAnimated:YES completion:nil];
+            }
+        };
+    }
 }
 @end
 

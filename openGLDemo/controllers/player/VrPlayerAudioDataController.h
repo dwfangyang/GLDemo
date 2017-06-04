@@ -8,6 +8,16 @@
 
 #import "dataController.h"
 
+@protocol VRPlayerAudioDelegate <NSObject>
+
+- (CMSampleBufferRef)getNextAudioSampleBuffer;
+
+@end
+
 @interface VrPlayerAudioDataController : dataController
+
+@property (nonatomic,weak,readonly) id<VRPlayerAudioDelegate> delegate;
+
+- (instancetype)initWithDelegate:(__weak id<VRPlayerAudioDelegate>)delegate;
 
 @end

@@ -36,8 +36,8 @@
     if( self )
     {
         [_program use];
-        yOffset = 80;
-        xOffset = 0;
+        yOffset = 0;
+        xOffset = 80;
         [self updateMatrix];
         [self config];
     }
@@ -77,13 +77,13 @@
 {
     xOffset += angleSize.width;
     yOffset += angleSize.height;
-    if( xOffset < -45 )
+    if( yOffset < -45 )
     {
-        xOffset = -45;
+        yOffset = -45;
     }
-    else if( xOffset > 45 )
+    else if( yOffset > 45 )
     {
-        xOffset = 45;
+        yOffset = 45;
     }
     [_program use];
     [self updateMatrix];
@@ -93,7 +93,7 @@
 {
     GLushort latitudeSlice = 70, longitudeSlice = 124;
     numVertices = (latitudeSlice-1)*(longitudeSlice+1) + 2;
-    numIndices = latitudeSlice*longitudeSlice*6-2*longitudeSlice;
+    numIndices = latitudeSlice*longitudeSlice*6-6*longitudeSlice;
     if( !vertices )
     {
         vertices =(GLfloat*)malloc(numVertices*3*sizeof(GLfloat));
@@ -107,12 +107,12 @@
         textureCoors = (GLfloat*)malloc(numVertices*2*sizeof(GLfloat));
     }
     
-    vertices[0] = 0;vertices[1] = 0;vertices[2] = 1;vertices[3] = 0;vertices[4] = 0;vertices[5] = -1;
+    vertices[0] = 0;vertices[1] = 1;vertices[2] = 0;vertices[3] = 0;vertices[4] = -1;vertices[5] = 0;
     textureCoors[0] = 0;textureCoors[1] = 1; textureCoors[2] = 0;textureCoors[3] = 0;
     float latiAngleStep = PI/latitudeSlice, longiAngleStep = 2*PI/longitudeSlice;
     for( int i = 1; i< latitudeSlice; ++i )
     {
-        for( int j = 0; j < longitudeSlice+1; ++j )
+        for( int j = 0; j <= longitudeSlice; ++j )
         {
             float longiAngle = j*longiAngleStep,latiangle = i*latiAngleStep;
             if( j == longitudeSlice )
@@ -126,10 +126,6 @@
             
             GLfloat* tco = &textureCoors[(2+j+(i-1)*(longitudeSlice+1))*2];
             tco[0] = j*1.0/longitudeSlice;
-            if( longitudeSlice == j )
-            {
-                tco[0] = 0;
-            }
             tco[1] = 1- i*1.0/latitudeSlice;
         }
     }
@@ -154,7 +150,7 @@
                 /*index[0] = 0;
                 index[1] = 0;
                 index[2] = m + (longitudeSlice+1)*(k-1) + 2;*/
-                index[0] = 0;//index[1];
+                index[0] = 1;//index[1];
                 index[1] = m + (longitudeSlice+1)*(k-1) + 2;//index[2];
                 index[2] = m+1 + (longitudeSlice+1)*(k-1) +2;
             }
@@ -188,8 +184,8 @@
 {
     GLKMatrix4 projectionmatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(FOV), 16.0/9, 0.1, 2);
     GLKMatrix4 modelviewmatrix = GLKMatrix4Identity;
-    modelviewmatrix = GLKMatrix4RotateX(modelviewmatrix, GLKMathDegreesToRadians(xOffset));
-    modelviewmatrix = GLKMatrix4RotateY(modelviewmatrix, GLKMathDegreesToRadians(yOffset));
+    modelviewmatrix = GLKMatrix4RotateX(modelviewmatrix, GLKMathDegreesToRadians(yOffset));
+    modelviewmatrix = GLKMatrix4RotateY(modelviewmatrix, GLKMathDegreesToRadians(xOffset));
     GLKMatrix4 mvp = GLKMatrix4Multiply(projectionmatrix, modelviewmatrix);
     GLuint mvpMatrixLocation = [_program getUniformLocation:@"mvpMatrix"];
     glUniformMatrix4fv(mvpMatrixLocation, 1, GL_FALSE, mvp.m);

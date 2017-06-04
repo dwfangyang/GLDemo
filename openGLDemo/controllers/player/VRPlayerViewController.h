@@ -10,4 +10,8 @@
 
 @interface VRPlayerViewController : UIViewController
 
+@property (nonatomic,strong) NSURL* videoUrl;
+
+@property (nonatomic,strong) dispatch_block_t completion;
+
 @end
