@@ -6,7 +6,7 @@
 //  Copyright © 2016年 dw_fangyang. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import <Photos/Photos.h>
 #import <AVFoundation/AVFoundation.h>
 #import "GLSimplestImageView.h"
@@ -49,7 +49,7 @@
     
     _simpleView = [[GLSimplestImageView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_simpleView];
-    _simpleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
+    _simpleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     _btnRecord = [[RecordButton alloc] initWithFrame:CGRectMake(frame.size.width/2-40, frame.size.height- 68, 80, 60)];
     [self.view addSubview:_btnRecord];
@@ -74,15 +74,8 @@
     [_btnVR.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [_btnVR setTitle:@"VR" forState:UIControlStateNormal];
     [_btnVR setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
-}
-
-- (void)dealloc
-{
-    if( self.viewLoaded )
-    {
-        [self.btnRecord removeTarget:self action:@selector(recordBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self.btnSwitchCamera removeTarget:self action:@selector(switchCameraBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    
+//    [[DatabaseManager sharedManager] openDataBase];
 }
 
 - (void)configDanmakuBtn;
@@ -149,11 +142,6 @@
 }
 
 #pragma mark view event
-- (void)viewDidLayoutSubviews
-{
-    self.simpleView.frame = self.view.bounds;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -196,7 +184,7 @@
 {
     if( !self.isRecording )
     {
-        if( ![[PermissionInterceptor sharedInterceptor] requestPermission:PermissionCamera,PermissionAlbum,PermissionAudio] )
+        if( ![[PermissionInterceptor sharedInterceptor] requestPermission:PermissionCamera,PermissionAudio,PermissionAlbum] )
         {
             return;
         }
@@ -223,11 +211,19 @@
 
 - (void)switchCameraBtnTapped:(UIButton*)btn;
 {
+    if( ![[PermissionInterceptor sharedInterceptor] requestPermission:PermissionCamera] )
+    {
+        return;
+    }
     [self.datacontroller switchCamera];
 }
 
 - (void)vrBtnTapped:(UIButton*)btn;
 {
+    if( ![[PermissionInterceptor sharedInterceptor] requestPermission:PermissionAlbum] )
+    {
+        return;
+    }
     if( !self.presentedViewController )
     {
         [self.datacontroller stopCapture];

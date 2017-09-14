@@ -7,6 +7,7 @@
 //
 
 #import "CameraDataController.h"
+#import "ImageProcessingDataController.h"
 #import "GLImage.h"
 #import "GLBeautyPainter.h"
 #import "VideoEncoder.h"
@@ -49,6 +50,8 @@
 
 //assetwriter
 @property (nonatomic,strong) GLVideoAssetWriter* assetWriter;
+
+@property (nonatomic,strong) ImageProcessingDataController* imageProcessor;
 
 @end
 
@@ -102,12 +105,15 @@
         NSLog(@"start capture while capturing");
         return;
     }
-    self.isCaptureYUV = YES;
+    self.isCaptureYUV = NO;
     self.simpleView = imgView;
-    [self.videoCapturer startCapture];
+    [self.videoCapturer startCaptureWithYUV:self.isCaptureYUV];
     
     __typeof(self) __weak wself = self;
     dispatch_async_on_glcontextqueue(^{
+        wself.imageProcessor = [ImageProcessingDataController new];
+        [wself.imageProcessor setFilterMode:FilterModeNormal];
+        
         BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
         wself.buffer = [[GLFramebuffer alloc] initWithSize:isPortrait?portraitSize:landscapeSize];
         [wself.buffer useFramebuffer];
@@ -282,6 +288,8 @@
         _beautyPainter.inputRotation = (self.videoCapturer.isFrontCamera? GLInputRotationFlipHorizontal:GLInputRotationNone);
         
         [_beautyPainter paint];
+        
+//        GLFramebuffer* fbuf = [_imageProcessor process:_buffer];
         
         [_preRenderBuffer useFramebuffer];
         _preRenderPainter.inputTexture = _buffer.texture;

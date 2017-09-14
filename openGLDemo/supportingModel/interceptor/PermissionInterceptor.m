@@ -35,41 +35,67 @@
                 case PermissionCamera:
                 {
                     AVAuthorizationStatus stat = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-                    if( stat != AVAuthorizationStatusAuthorized )
+                    if( stat == AVAuthorizationStatusNotDetermined )
                     {
+                        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:nil];
                         permitted = NO;
-                        [[ScreenToast sharedInstance] showToast:@"此操作需要相机权限"];
                     }
                     else
                     {
-                        permitted = YES;
+                        if( stat != AVAuthorizationStatusAuthorized )
+                        {
+                            permitted = NO;
+                            [[ScreenToast sharedInstance] showToast:@"此操作需要相机权限"];
+                        }
+                        else
+                        {
+                            permitted = YES;
+                        }
                     }
                 }
                     break;
                 case PermissionAudio:
                 {
                     AVAuthorizationStatus stat = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
-                    if( stat != AVAuthorizationStatusAuthorized )
+                    if( stat == AVAuthorizationStatusNotDetermined )
                     {
+                        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:nil];
                         permitted = NO;
-                        [[ScreenToast sharedInstance] showToast:@"此操作需要麦克风权限"];
                     }
                     else
                     {
-                        permitted = YES;
+                        if( stat != AVAuthorizationStatusAuthorized )
+                        {
+                            permitted = NO;
+                            [[ScreenToast sharedInstance] showToast:@"此操作需要麦克风权限"];
+                        }
+                        else
+                        {
+                            permitted = YES;
+                        }
                     }
                 }
                     break;
                 case PermissionAlbum:
                 {
                     PHAuthorizationStatus stat = [PHPhotoLibrary authorizationStatus];
-                    if( stat != PHAuthorizationStatusAuthorized )
+                    if( stat == PHAuthorizationStatusNotDetermined )
                     {
+                        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                            
+                        }];
                         permitted = NO;
-                        [[ScreenToast sharedInstance] showToast:@"此操作需要相册权限"];
                     }
-                    else{
-                        permitted = YES;
+                    else
+                    {
+                        if( stat != PHAuthorizationStatusAuthorized )
+                        {
+                            permitted = NO;
+                            [[ScreenToast sharedInstance] showToast:@"此操作需要相册权限"];
+                        }
+                        else{
+                            permitted = YES;
+                        }
                     }
                 }
                     break;

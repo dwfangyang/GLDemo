@@ -58,7 +58,7 @@
     {
         _type = type;
         _program = [[GLProgram alloc] initWithVertexString:defVertexShader fragmentString:fShader];
-        BOOL ret = [_program link];
+        __unused BOOL ret = [_program link];
         
         NSAssert(ret, @"glyuvpainter program link fail");
         GLuint texturelocation = [_program getAttributeLocation:@"textureCoordinate"];
