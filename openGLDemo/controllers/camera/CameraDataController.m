@@ -72,25 +72,6 @@
     return self;
 }
 
-#pragma mark notifications
-- (void)applicationWillResignActive:(NSNotification*)notification
-{
-    
-}
-
-- (void)applicationBecomeActive:(NSNotification*)notification
-{
-    
-}
-
-- (void)applicationDidEnterBackground:(NSNotification*)notification;
-{
-}
-
-- (void)applicationWillEnterForeground:(NSNotification*)notification;
-{
-}
-
 #pragma mark api
 - (void)startCaptureWith:(GLSimplestImageView *)imgView
 {
@@ -193,42 +174,44 @@
 {
     [self.encoder endEncode];
     [self.audioCapturer stopCapture];
-    if( self.videoCapturer.captureOutputQueue )
+    if( !self.videoCapturer.captureOutputQueue )
     {
-        dispatch_async(self.videoCapturer.captureOutputQueue, ^{
-            [self.assetWriter stopRecording:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    dispatch_block_t fetchblock = ^{
-                        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-                            PHAssetChangeRequest* request = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:self.assetWriter.urlAsset];
-                            request.favorite = NO;
-                        } completionHandler:^(BOOL success, NSError * _Nullable error) {
-                            NSError* err = nil;
-                            [[NSFileManager defaultManager] removeItemAtPath:self.assetWriter.urlAsset.path error:&err];
-                            NSLog(@"issucceeded:%d,error:%@,removeerr:%@",success,error,err);
-                        }];
-                    };
-                    PHAuthorizationStatus stat = [PHPhotoLibrary authorizationStatus] ;
-                    
-                    if ( stat == PHAuthorizationStatusNotDetermined ) {
-                        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-                            if ( status == PHAuthorizationStatusAuthorized ) {
-                                BLOCK_INVOKE(fetchblock);
-                            }
-                        }];
-                    }
-                    else if( stat == PHAuthorizationStatusAuthorized )
-                    {
-                        BLOCK_INVOKE(fetchblock);
-                    }
-                    else
-                    {
-                        [[ScreenToast sharedInstance] showToast:@"无法保存视频，请到设置中打开相册权限"];
-                    }
-                });
-            }];
-        });
+        return;
     }
+    
+    dispatch_async(self.videoCapturer.captureOutputQueue, ^{
+        [self.assetWriter stopRecording:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_block_t fetchblock = ^{
+                    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                        PHAssetChangeRequest* request = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:self.assetWriter.urlAsset];
+                        request.favorite = NO;
+                    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+                        NSError* err = nil;
+                        [[NSFileManager defaultManager] removeItemAtPath:self.assetWriter.urlAsset.path error:&err];
+                        NSLog(@"issucceeded:%d,error:%@,removeerr:%@",success,error,err);
+                    }];
+                };
+                PHAuthorizationStatus stat = [PHPhotoLibrary authorizationStatus] ;
+                
+                if ( stat == PHAuthorizationStatusNotDetermined ) {
+                    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                        if ( status == PHAuthorizationStatusAuthorized ) {
+                            BLOCK_INVOKE(fetchblock);
+                        }
+                    }];
+                }
+                else if( stat == PHAuthorizationStatusAuthorized )
+                {
+                    BLOCK_INVOKE(fetchblock);
+                }
+                else
+                {
+                    [[ScreenToast sharedInstance] showToast:@"无法保存视频，请到设置中打开相册权限"];
+                }
+            });
+        }];
+    });
 }
 
 - (void)addDanmaku:(NSString *)danmaku
@@ -240,6 +223,8 @@
             if( img )
             {
                 wself.danmakuImage = [[GLStillImage alloc] initWithImage:img];
+//                NSString* document = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+//                [UIImagePNGRepresentation(img) writeToFile:[NSString stringWithFormat:@"%@/abc.png",document] atomically:YES];
                 wself.beginx = 1;
             }
             else
@@ -317,10 +302,7 @@
             _blendPainter.inputTexture = self.danmakuImage.texture;
             [_blendPainter paint];
             glDisable(GL_BLEND);
-        }
-        
-        if( self.danmakuImage )
-        {
+            
             [_buffer useFramebuffer];
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glEnable(GL_BLEND);
@@ -371,6 +353,25 @@
     //    CMBlockBufferRef ref = CMSampleBufferGetDataBuffer(sampleBuffer);
     //    CMVideoFormatDescriptionRef format = CMSampleBufferGetFormatDescription(sampleBuffer);
     //    arr = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, NO);
+}
+
+#pragma mark notifications
+- (void)applicationWillResignActive:(NSNotification*)notification
+{
+    
+}
+
+- (void)applicationBecomeActive:(NSNotification*)notification
+{
+    
+}
+
+- (void)applicationDidEnterBackground:(NSNotification*)notification;
+{
+}
+
+- (void)applicationWillEnterForeground:(NSNotification*)notification;
+{
 }
 
 @end
